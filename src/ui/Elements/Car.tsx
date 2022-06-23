@@ -1,21 +1,21 @@
-import {useEffect} from "react";
+import { useEffect } from "react";
 import { Car } from "core/car";
+import Wheel from "./Wheel";
 
 export default () => {
-  let car: Car;
+  let car = new Car();
   useEffect(() => {
-    car = new Car()
-    initCarKeyBindings(car), []
-  });
+    initCarKeyBindings(car);
+  }, []);
 
   return (
     <div className="car">
       {car.wheels.map((wheel, i) => (
-        <WheelEl key={i} wheel={wheel} />
+        <Wheel key={i} wheel={wheel} />
       ))}
     </div>
   );
-}
+};
 
 function initCarKeyBindings(car: Car) {
   let accelerateTimer: NodeJS.Timer;
@@ -34,3 +34,12 @@ function initCarKeyBindings(car: Car) {
       accelerateTimer = setInterval(() => car.accelerate(), 15);
     }
   });
+
+  window.addEventListener("keyup", (e) => {
+    if (["ArrowRight", "ArrowLeft"].includes(e.code)) {
+      clearInterval(turnTimer);
+    } else if (["Space", "ArrowUp"].includes(e.code)) {
+      clearInterval(accelerateTimer);
+    }
+  });
+}
