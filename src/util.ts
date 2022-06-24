@@ -1,4 +1,4 @@
-import { Position } from "core/types";
+import { Position } from "core/car";
 
 export default {
   posToStyle(position: Position) {
