@@ -1,12 +1,23 @@
 import "./App.css";
-import Car from "./Car";
+import CarEl from "./Car";
+import { Car } from "../core/car";
+import Speedometer from "./Speedometer";
+import Menu from "./Menu";
+import { useEffect } from "react";
+import initDrivingKeyBindings from "../carKeyBindings";
 
-function App() {
+export default () => {
+  const car = new Car();
+
+  useEffect(() => {
+    initDrivingKeyBindings(car);
+  }, []);
+
   return (
     <div id="App">
-      <Car />
+      <Menu car={car} />
+      <CarEl car={car} />
+      <Speedometer car={car} />
     </div>
   );
-}
-
-export default App;
+};

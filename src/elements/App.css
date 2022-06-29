@@ -1,31 +1,13 @@
 #App {
   background-color: #282c34;
-  height: 100vh;
+  height: calc(100vh - 4px);
   font-size: calc(10px + 2vmin);
   color: white;
+  border: 2px solid #5b5b5b;
 }
 
-.car {
-  display: inline-block;
-  border: 1px solid black;
-  background-color: red;
-  position: absolute;
-  border-radius: 30%;
-}
-
-.rear {
-  height: 10%;
-  width: 100%;
-  background-color: #ffffff;
-  position: absolute;
-  border-radius: 20%;
-  top: 80%;
-}
-
-.front {
-  border-radius: 40% 40% 0 0;
-  height: 30%;
-  width: 100%;
-  background-color: #ffffff;
-  position: absolute;
+body {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
 }

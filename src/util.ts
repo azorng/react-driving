@@ -8,3 +8,29 @@ export default {
     };
   },
 };
+
+export class Timer {
+  timer?: NodeJS.Timer;
+  action: () => void;
+  interval: number;
+
+  constructor(action: () => void, interval: number) {
+    this.action = action;
+    this.interval = interval;
+  }
+
+  get isActive() {
+    return !!this.timer;
+  }
+
+  start() {
+    if (!this.isActive) {
+      this.timer = setInterval(this.action, this.interval);
+    }
+  }
+
+  stop() {
+    clearInterval(this.timer);
+    this.timer = undefined;
+  }
+}
